@@ -91,7 +91,7 @@ validation_predictions.csv contains 12,000 rows with load_id and predicted_rate.
 
 ### December predictions
 
-data/december-chart-inputs-filled.csv contains predictions for all 31 days of December 2025.
+december_chart_inputs_filled.csv contains predictions for all 31 days of December 2025.
 
 ### December chart
 
@@ -109,7 +109,7 @@ python train_predict.py
 
 Run the official checker:
 
-python score.py --predictions validation_predictions.csv --december-predictions december_chart_inputs_filled.csv --output-dir scorer_results
+python score.py --predictions validation_predictions.csv --december-predictions december_chart_inputs_filled.csv
 
 The checker successfully validates 12,000 final predictions and 31 December predictions.
 
@@ -124,6 +124,6 @@ The metrics reported in this repository are from the development validation spli
 - train_predict.py — model training and prediction pipeline.
 - score.py — provided assessment validation script.
 - validation_predictions.csv — final 12,000 predictions.
-- data/december-chart-inputs-filled.csv — completed December predictions.
+- december_chart_inputs_filled.csv — completed December predictions.
 - scorer_results/candidate_december.png — December prediction chart.
 - requirements.txt — required Python packages.
