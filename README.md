@@ -46,14 +46,31 @@ This approach better represents the real forecasting task of predicting future f
 | Random Forest | $219.48 | $675.48 | 0.8047 |
 | HistGradientBoosting | $158.40 | $661.64 | 0.8126 |
 | Log-target HistGradientBoosting | $116.85 | $648.56 | 0.8200 |
+| Tuned Log-target HistGradientBoosting (L2=5) | $115.45 | $647.40 | 0.8206 |
 
 The final model uses HistGradientBoosting with a log-transformed target through TransformedTargetRegressor.
 
-The log transformation was useful because the freight-rate target has a strongly right-skewed distribution.
+The log transformation was useful because the freight-rate target has a strongly right-skewed distribution. Hyperparameter testing found that increasing L2 regularization from 1.0 to 5.0 improved the chronological validation RMSE and R2 while also slightly improving MAE.
 
 ## Final Model
 
 After model selection, the final model was retrained using all 48,000 development observations from January through October 2025.
+
+Final selected configuration:
+
+- HistGradientBoostingRegressor
+- 300 iterations
+- Learning rate: 0.05
+- Maximum leaf nodes: 31
+- L2 regularization: 5.0
+- Random state: 42
+- Log-transformed target using TransformedTargetRegressor
+
+The chronological validation performance of this configuration was:
+
+- MAE: $115.45
+- RMSE: $647.40
+- R2: 0.8206
 
 The pipeline performs:
 
